@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>班级积分管理系统</title>
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
   <script>
     tailwind.config = {
@@ -42,7 +40,6 @@
         50% { transform: scale(1.2); opacity: 1; filter: brightness(1.3); }
         100% { transform: scale(1); opacity: 1; }
       }
-      /* 书声朗朗专用动画 */
       .falling-tree {
         position: absolute;
         font-size: 28px;
@@ -76,7 +73,7 @@
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800 flex h-screen overflow-hidden">
-<!-- 左侧导航栏 -->
+
 <aside id="sidebar" class="w-64 bg-white shadow-sm hidden md:flex flex-col fixed h-full z-30">
   <div class="p-4 border-b text-center">
     <h1 class="text-xl font-bold text-primary"><i class="fa fa-trophy mr-2"></i>班级积分系统</h1>
@@ -100,7 +97,6 @@
     <button class="nav-btn w-full flex items-center px-4 py-3 rounded-lg hover:bg-primary/10 hover:text-primary transition-all" data-target="quiet">
       <i class="fa fa-leaf w-5"></i><span class="ml-3">静音自习</span>
     </button>
-    <!-- 新增：书声朗朗 -->
     <button class="nav-btn w-full flex items-center px-4 py-3 rounded-lg hover:bg-primary/10 hover:text-primary transition-all" data-target="read">
       <i class="fa fa-book w-5"></i><span class="ml-3">书声朗朗</span>
     </button>
@@ -114,18 +110,15 @@
       <i class="fa fa-cog w-5"></i><span class="ml-3">系统设置</span>
     </button>
   </nav>
-  <div class="p-3 text-xs text-gray-500 text-center border-t">数据本地存储</div>
+  <div class="p-3 text-xs text-gray-500 text-center border-t">☁️ 云端实时同步</div>
 </aside>
 
-<!-- 主内容区 -->
 <div class="flex-1 flex flex-col md:ml-64 overflow-hidden">
-  <!-- 移动端导航按钮 -->
   <div class="md:hidden flex items-center justify-between p-4 bg-white shadow-sm">
     <h1 class="font-bold text-primary">班级积分系统</h1>
     <button id="mobileToggle" class="p-2"><i class="fa fa-bars text-xl"></i></button>
   </div>
 
-  <!-- 顶部数据统计 -->
   <div class="bg-white p-4 shadow-sm grid grid-cols-1 md:grid-cols-3 gap-4">
     <div class="flex items-center space-x-3 p-3 rounded-lg bg-blue-50">
       <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center"><i class="fa fa-th text-primary"></i></div>
@@ -150,9 +143,7 @@
     </div>
   </div>
 
-  <!-- 内容区域 -->
   <div class="flex-1 overflow-y-auto p-4">
-    <!-- 班级设置 -->
     <section id="class" class="content-section">
       <div class="bg-white rounded-xl p-6 card-shadow max-w-xl mx-auto">
         <h2 class="text-lg font-bold mb-4">班级信息设置</h2>
@@ -170,7 +161,6 @@
       </div>
     </section>
 
-    <!-- 学生 & 小组管理 -->
     <section id="student" class="content-section hidden">
       <div class="bg-white rounded-lg mb-4">
         <div class="flex border-b">
@@ -178,8 +168,6 @@
           <button class="tab-btn px-5 py-3 text-gray-500" data-tab="groupTab">小组管理</button>
         </div>
       </div>
-
-      <!-- 学生管理 -->
       <div id="studentTab" class="tab-content">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
           <div class="flex gap-2">
@@ -195,8 +183,6 @@
           <div class="col-span-full text-center py-10 text-gray-500">暂无学生</div>
         </div>
       </div>
-
-      <!-- 小组管理 -->
       <div id="groupTab" class="tab-content hidden">
         <div class="mb-4">
           <button id="addGroupBtn" class="px-3 py-2 bg-primary text-white rounded-lg hover:bg-primary/90"><i class="fa fa-plus mr-1"></i>新增小组</button>
@@ -207,7 +193,6 @@
       </div>
     </section>
 
-    <!-- 积分管理 -->
     <section id="points" class="content-section hidden">
       <div class="bg-white p-4 rounded-xl card-shadow mb-4 flex flex-wrap justify-between items-center gap-3">
         <h3 class="font-bold">危险操作</h3>
@@ -218,7 +203,6 @@
           <button id="clearAllPoints" class="px-4 py-2 bg-danger text-white rounded-lg">一键清空所有积分（需密码）</button>
         </div>
       </div>
-
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
         <div class="bg-white p-4 rounded-xl card-shadow">
           <h3 class="font-bold mb-3">单个学生积分</h3>
@@ -252,7 +236,6 @@
             <button class="px-4 bg-danger text-white rounded-lg" id="classMinus">- 减分</button>
           </div>
         </div>
-
         <div class="bg-white p-4 rounded-xl card-shadow sm:col-span-2">
           <h3 class="font-bold mb-3">自定义批量加减分</h3>
           <div class="flex gap-2 mb-3">
@@ -274,7 +257,6 @@
       </div>
     </section>
 
-    <!-- 请假管理模块 -->
     <section id="leave" class="content-section hidden">
       <div class="bg-white rounded-xl p-4 card-shadow mb-4 flex flex-wrap justify-between items-center gap-3">
         <h3 class="font-bold text-lg">学生请假管理</h3>
@@ -287,7 +269,6 @@
           </button>
         </div>
       </div>
-
       <div class="bg-white p-4 rounded-xl card-shadow mb-4 grid grid-cols-1 md:grid-cols-3 gap-3">
         <select id="filterStudent" class="border rounded-lg px-3 py-2">
           <option value="">全部学生</option>
@@ -297,14 +278,12 @@
         </select>
         <input type="month" id="filterMonth" class="border rounded-lg px-3 py-2">
       </div>
-
       <div class="bg-white p-4 rounded-xl card-shadow mb-4 grid grid-cols-2 md:grid-cols-4 gap-3">
         <button id="exportAllLeave" class="bg-primary text-white rounded-lg px-3 py-2">导出全部请假</button>
         <button id="exportStudentLeave" class="bg-secondary text-white rounded-lg px-3 py-2">导出当前学生</button>
         <button id="exportTypeLeave" class="bg-warning text-white rounded-lg px-3 py-2">导出当前类型</button>
         <button id="exportMonthLeave" class="bg-success text-white rounded-lg px-3 py-2">导出当前月份</button>
       </div>
-
       <div class="bg-white rounded-xl p-4 card-shadow overflow-x-auto">
         <table class="w-full">
           <thead>
@@ -324,7 +303,6 @@
       </div>
     </section>
 
-    <!-- 签到打卡模块 -->
     <section id="sign" class="content-section hidden">
       <div class="bg-white rounded-xl p-4 card-shadow mb-4 flex flex-wrap justify-between items-center gap-3">
         <h3 class="font-bold text-lg">每日签到打卡</h3>
@@ -340,7 +318,6 @@
           </button>
         </div>
       </div>
-
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
         <div class="bg-white p-4 rounded-xl card-shadow bg-blue-50">
           <p class="text-sm text-gray-500">今日应到</p>
@@ -359,7 +336,6 @@
           <p id="signDoneNight" class="text-2xl font-bold text-secondary">0</p>
         </div>
       </div>
-
       <div class="bg-white rounded-lg mb-4">
         <div class="flex border-b">
           <button class="sign-tab px-5 py-3 border-b-2 border-primary text-primary font-medium" data-type="morning">早读打卡</button>
@@ -367,7 +343,6 @@
           <button class="sign-tab px-5 py-3 text-gray-500" data-type="night">晚自习打卡</button>
         </div>
       </div>
-
       <div class="bg-white p-4 rounded-xl card-shadow mb-4 grid grid-cols-1 md:grid-cols-3 gap-3">
         <select id="signFilterStudent" class="border rounded-lg px-3 py-2">
           <option value="">全部学生</option>
@@ -379,28 +354,23 @@
           <option value="0">未打卡</option>
         </select>
       </div>
-
       <div id="signCardList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         <div class="col-span-full text-center py-10 text-gray-500">暂无学生，请先添加学生</div>
       </div>
     </section>
 
-    <!-- 静音自习养小树 -->
     <section id="quiet" class="content-section hidden">
       <div class="bg-white rounded-xl p-6 card-shadow max-w-4xl mx-auto">
         <h2 class="text-xl font-bold text-center text-green-700 mb-4">🌱 静音自习养小树</h2>
         <div class="text-center text-red-600 font-bold text-lg mb-6">安静养小树，班级更进步！</div>
-
         <div id="micStatusQuiet" class="py-2 px-4 rounded-lg text-center font-bold mb-4 bg-yellow-50 text-yellow-800">
           🎤 等待开始 / 管理员可暂停
         </div>
-
         <div class="flex justify-center gap-3 mb-6">
           <button id="startQuietBtn" class="px-5 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">开始监测</button>
           <button id="pauseQuietBtn" class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">暂停监测</button>
           <button id="resetQuietBtn" class="px-5 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">重置小树</button>
         </div>
-
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div class="bg-green-50 p-4 rounded-lg text-center">
             <div class="text-sm text-gray-500">当前分贝</div>
@@ -415,7 +385,6 @@
             <div id="starQuiet" class="text-2xl font-bold text-yellow-700">0</div>
           </div>
         </div>
-
         <div class="flex justify-center items-center h-56 mb-6 bg-green-50 rounded-xl relative overflow-hidden">
           <div id="treeAnimation" class="text-8xl transition-all duration-1000 tree-swing">
             🌱
@@ -424,19 +393,16 @@
             当前形态：<span id="treeStageText">小芽芽</span>
           </div>
         </div>
-
         <div class="mb-6">
           <div class="text-center mb-2">成长进度</div>
           <div class="w-full h-6 bg-gray-200 rounded-full overflow-hidden">
             <div id="progressQuiet" class="h-full bg-gradient-to-r from-green-500 to-green-300 w-0 transition-all"></div>
           </div>
         </div>
-
         <div class="bg-yellow-50 p-4 rounded-lg mb-6">
           <div class="font-bold text-orange-600 mb-2">🎁 当前奖励</div>
           <div id="rewardQuiet" class="text-gray-700">每升一级，全班每位同学奖励 +2 分</div>
         </div>
-
         <div class="bg-blue-50 p-4 rounded-lg mb-6">
           <div class="font-bold text-blue-700 mb-2">📜 班级约定</div>
           <div class="text-blue-900 space-y-1">
@@ -445,26 +411,21 @@
             <div>✅ 齐心协力，养大树</div>
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- 新增：书声朗朗养小树 -->
     <section id="read" class="content-section hidden">
       <div class="bg-white rounded-xl p-6 card-shadow max-w-4xl mx-auto">
         <h2 class="text-xl font-bold text-center text-green-700 mb-4">📖 书声朗朗养小树</h2>
         <div class="text-center text-red-600 font-bold text-lg mb-6">放声朗读，书香养树！</div>
-
         <div id="micStatusRead" class="py-2 px-4 rounded-lg text-center font-bold mb-4 bg-yellow-50 text-yellow-800">
           🎤 等待开始 / 管理员可暂停
         </div>
-
         <div class="flex justify-center gap-3 mb-6">
           <button id="startReadBtn" class="px-5 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">开始监测</button>
           <button id="pauseReadBtn" class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">暂停监测</button>
           <button id="resetReadBtn" class="px-5 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">重置小树</button>
         </div>
-
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div class="bg-green-50 p-4 rounded-lg text-center">
             <div class="text-sm text-gray-500">当前音量</div>
@@ -479,26 +440,20 @@
             <div id="starRead" class="text-2xl font-bold text-yellow-700">0</div>
           </div>
         </div>
-
-        <!-- 小树动画区 -->
         <div class="flex justify-center items-center h-56 mb-6 bg-green-50 rounded-xl relative overflow-hidden">
           <div class="tree-stage text-lg font-bold text-green-700 mb-2" id="stageRead">种子 🌱</div>
           <div id="treeContainerRead" class="absolute w-full h-full"></div>
         </div>
-
-        <!-- 成长进度条 -->
         <div class="mb-6">
           <div class="text-center mb-2">成长进度</div>
           <div class="w-full h-6 bg-gray-200 rounded-full overflow-hidden">
             <div id="progressRead" class="h-full bg-gradient-to-r from-green-500 to-green-300 w-0 transition-all"></div>
           </div>
         </div>
-
         <div class="bg-yellow-50 p-4 rounded-lg mb-6">
           <div class="font-bold text-orange-600 mb-2">🎁 当前奖励</div>
           <div id="rewardRead" class="text-gray-700">大声朗读达标，每升一级全班每人 +2 分</div>
         </div>
-
         <div class="bg-blue-50 p-4 rounded-lg mb-6">
           <div class="font-bold text-blue-700 mb-2">📜 班级朗读约定</div>
           <div class="text-blue-900 space-y-1">
@@ -510,7 +465,6 @@
       </div>
     </section>
 
-    <!-- 积分商店 -->
     <section id="shop" class="content-section hidden">
       <div class="flex justify-between mb-4">
         <button id="addGoodsBtn" class="px-3 py-2 bg-primary text-white rounded-lg hover:bg-primary/90"><i class="fa fa-plus mr-1"></i>新增商品</button>
@@ -520,7 +474,6 @@
       </div>
     </section>
 
-    <!-- 记录管理 -->
     <section id="record" class="content-section hidden">
       <div class="flex gap-2 mb-4">
         <button id="exportRank" class="px-3 py-2 bg-primary text-white rounded-lg"><i class="fa fa-download mr-1"></i>导出排行榜</button>
@@ -549,7 +502,6 @@
       </div>
     </section>
 
-    <!-- 系统设置 -->
     <section id="settings" class="content-section hidden">
       <div class="bg-white rounded-xl p-6 card-shadow max-w-xl mx-auto">
         <h2 class="text-lg font-bold mb-4">系统设置</h2>
@@ -567,7 +519,6 @@
   </div>
 </div>
 
-<!-- 右侧排行榜 -->
 <div class="w-72 bg-white shadow-sm hidden lg:block overflow-y-auto">
   <div class="p-4 border-b">
     <h2 class="font-bold">积分排行榜</h2>
@@ -583,7 +534,6 @@
   </div>
 </div>
 
-<!-- 模态框 -->
 <div id="modal" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50">
   <div class="bg-white rounded-2xl w-full max-w-md p-6 modal-transition mx-4">
     <div class="flex justify-between items-center mb-6">
@@ -595,48 +545,104 @@
 </div>
 
 <script>
-// 本地存储工具
+const API = "https://api.jsonsilo.com/api/items/918201ac-857f-4409-b49f-28051232d12f";
+
+async function cloudGet() {
+  try {
+    const res = await fetch(API);
+    const data = await res.json();
+    return data || {};
+  } catch (e) {
+    return {};
+  }
+}
+
+async function cloudSet(obj) {
+  try {
+    await fetch(API, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(obj)
+    });
+  } catch (e) {}
+}
+
 const store = {
-  get: (key) => JSON.parse(localStorage.getItem(key)) || [],
-  set: (key, val) => localStorage.setItem(key, JSON.stringify(val)),
-  getClass: () => JSON.parse(localStorage.getItem('classInfo')) || { name: '未设置班级', slogan: '团结友爱，积极向上' },
-  setClass: (data) => localStorage.setItem('classInfo', JSON.stringify(data)),
-  getPwd: () => localStorage.getItem('adminPwd') || '123456',
-  setPwd: (pwd) => localStorage.setItem('adminPwd', pwd),
-  getLastCheckDate: () => localStorage.getItem('lastCheckDate'),
-  setLastCheckDate: (date) => localStorage.setItem('lastCheckDate', date),
-  getTree: () => JSON.parse(localStorage.getItem('classTreeData')) || null,
-  setTree: (data) => localStorage.setItem('classTreeData', JSON.stringify(data)),
-  getReadTree: () => JSON.parse(localStorage.getItem('readTreeData')) || null,
-  setReadTree: (data) => localStorage.setItem('readTreeData', JSON.stringify(data))
+  async get(key) {
+    const data = await cloudGet();
+    return data[key] ?? [];
+  },
+  async set(key, val) {
+    const data = await cloudGet();
+    data[key] = val;
+    await cloudSet(data);
+  },
+  async getClass() {
+    const data = await cloudGet();
+    return data.classInfo || { name: "未设置班级", slogan: "团结友爱，积极向上" };
+  },
+  async setClass(data) {
+    const all = await cloudGet();
+    all.classInfo = data;
+    await cloudSet(all);
+  },
+  async getPwd() {
+    const data = await cloudGet();
+    return data.adminPwd || "123456";
+  },
+  async setPwd(pwd) {
+    const all = await cloudGet();
+    all.adminPwd = pwd;
+    await cloudSet(all);
+  },
+  async getLastCheckDate() {
+    const data = await cloudGet();
+    return data.lastCheckDate || "";
+  },
+  async setLastCheckDate(date) {
+    const all = await cloudGet();
+    all.lastCheckDate = date;
+    await cloudSet(all);
+  },
+  async getTree() {
+    const data = await cloudGet();
+    return data.classTreeData || null;
+  },
+  async setTree(data) {
+    const all = await cloudGet();
+    all.classTreeData = data;
+    await cloudSet(all);
+  },
+  async getReadTree() {
+    const data = await cloudGet();
+    return data.readTreeData || null;
+  },
+  async setReadTree(data) {
+    const all = await cloudGet();
+    all.readTreeData = data;
+    await cloudSet(all);
+  }
 };
 
-// 全局数据
-let students = store.get('students');
-let groups = store.get('groups');
-let goods = store.get('goods');
-let records = store.get('records');
-let leaves = store.get('leaves');
-let signs = store.get('signs');
-let CLEAR_PASSWORD = store.getPwd();
+let students = [];
+let groups = [];
+let goods = [];
+let records = [];
+let leaves = [];
+let signs = [];
+let CLEAR_PASSWORD = "123456";
+let currentSignType = "morning";
 
-// 当前打卡类型
-let currentSignType = 'morning';
-
-// 请假类型
-const leaveTypes = ['早读','正课','跑操','寄午','午自习','课后服务','晚自习'];
-
-// 打卡时间规则配置
+const leaveTypes = ["早读","正课","跑操","寄午","午自习","课后服务","晚自习"];
 const signTimeRules = {
-  morning: { start: '06:30', end: '07:15' },
-  noon: { start: '13:20', end: '13:35' },
-  night: { start: '18:40', end: '18:55' }
+  morning: { start: "06:30", end: "07:15" },
+  noon: { start: "13:20", end: "13:35" },
+  night: { start: "18:40", end: "18:55" }
 };
 
-// 工具函数
 const toast = (msg) => {
-  const t = document.createElement('div');
-  t.className = 'fixed top-4 right-4 bg-primary text-white px-4 py-2 rounded-lg z-50';
+  const t = document.createElement("div");
+  t.className = "fixed top-4 right-4 bg-primary text-white px-4 py-2 rounded-lg z-50";
   t.textContent = msg;
   document.body.appendChild(t);
   setTimeout(() => document.body.removeChild(t), 2000);
@@ -647,53 +653,46 @@ const updateGroupPoints = () => {
     const list = students.filter(s => s.groupId == g.id);
     g.points = list.reduce((sum, s) => sum + (s.points || 0), 0);
   });
-  store.set('groups', groups);
 };
 
-// 记录积分变动
-const addPointRecord = (target, type, point, operator, remark = '') => {
+const addPointRecord = (target, type, point, operator, remark = "") => {
   records.unshift({
     time: new Date().toLocaleString(),
-    target: target,
-    type: type,
-    point: point,
-    operator: operator || '管理员',
-    remark: remark || ''
+    target,
+    type,
+    point,
+    operator: operator || "管理员",
+    remark: remark || ""
   });
-  store.set('records', records);
 };
 
-// 导出CSV（修复Excel乱码）
 const exportCSV = (data, name, headers) => {
-  const csv = [headers.join(','), ...data.map(i => i.join(','))].join('\n');
-  const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
-  const a = document.createElement('a');
+  const csv = [headers.join(","), ...data.map(i => i.join(","))].join("\n");
+  const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
+  const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
   a.download = name;
   a.click();
 };
 
-// 通用CSV导入解析函数
 const parseCSV = (file, callback) => {
   const reader = new FileReader();
   reader.onload = e => {
     const text = e.target.result;
-    const rows = text.split(/\r?\n/).filter(r => r.trim()).map(r => r.split(',').map(c => c.trim()));
+    const rows = text.split(/\r?\n/).filter(r => r.trim()).map(r => r.split(",").map(c => c.trim()));
     callback(rows);
   };
   reader.readAsText(file);
 };
 
-// 时间比较：HH:mm 转分钟数
 const timeToMinutes = (timeStr) => {
-  const [h, m] = timeStr.split(':').map(Number);
+  const [h, m] = timeStr.split(":").map(Number);
   return h * 60 + m;
 };
 
-// 判断是否在允许打卡时间段内
 const isInSignTime = (type) => {
   const now = new Date();
-  const nowStr = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+  const nowStr = now.getHours().toString().padStart(2, "0") + ":" + now.getMinutes().toString().padStart(2, "0");
   const rule = signTimeRules[type];
   const nowMin = timeToMinutes(nowStr);
   const startMin = timeToMinutes(rule.start);
@@ -701,69 +700,24 @@ const isInSignTime = (type) => {
   return nowMin >= startMin && nowMin <= endMin;
 };
 
-// 日期转星期
 const getWeekText = (dateStr) => {
-  if(!dateStr) return '';
-  const weekArr = ['周日','周一','周二','周三','周四','周五','周六'];
+  if (!dateStr) return "";
+  const weekArr = ["周日","周一","周二","周三","周四","周五","周六"];
   const d = new Date(dateStr);
   return weekArr[d.getDay()];
 };
 
-// 每日22:00自动检查未打卡并扣分
-const startAutoCheckTimer = () => {
-  const checkTime = "22:00";
-  
-  const checkAndRun = () => {
-    const now = new Date();
-    const nowStr = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
-    
-    if (nowStr === checkTime) {
-      const today = getToday();
-      const lastCheck = store.getLastCheckDate();
-      
-      if (lastCheck !== today) {
-        store.setLastCheckDate(today);
-        
-        ['morning', 'noon', 'night'].forEach(type => {
-          const signedIds = signs.filter(s => s.date === today && s.type === type).map(s => s.studentId);
-          students.forEach(stu => {
-            if (!signedIds.includes(stu.id)) {
-              const leaveTypeMap = {
-                morning: '早读',
-                noon: '午自习',
-                night: '晚自习'
-              };
-              const targetLeaveType = leaveTypeMap[type];
-              
-              const hasLeave = leaves.some(l => 
-                l.studentId === stu.id && 
-                l.date === today && 
-                l.type === targetLeaveType
-              );
-              
-              if (hasLeave) return;
-              
-              stu.points -= 0.5;
-              const typeText = { morning: '早读', noon: '午自习', night: '晚自习' }[type];
-              addPointRecord(stu.name, `${typeText}未打卡`, -0.5, '系统自动', '未打卡扣分');
-            }
-          });
-        });
-        
-        store.set('students', students);
-        updateGroupPoints();
-        renderAll();
-        toast("22:00 自动未打卡扣分完成");
-      }
-    }
-  };
+const startAutoCheckTimer = () => {};
 
-  checkAndRun();
-  setInterval(checkAndRun, 60000);
-};
+async function renderAll() {
+  students = await store.get("students");
+  groups = await store.get("groups");
+  goods = await store.get("goods");
+  records = await store.get("records");
+  leaves = await store.get("leaves");
+  signs = await store.get("signs");
+  CLEAR_PASSWORD = await store.getPwd();
 
-// 渲染函数
-function renderAll() {
   renderStats();
   renderStudents();
   renderGroups();
@@ -778,312 +732,269 @@ function renderAll() {
   renderSignCards();
 }
 
-// ========== 签到打卡相关 ==========
 function getToday(){
-  return new Date().toISOString().split('T')[0];
+  return new Date().toISOString().split("T")[0];
 }
 
-// 渲染打卡筛选下拉框
 function renderSignFilter(){
-  const sel = document.getElementById('signFilterStudent');
+  const sel = document.getElementById("signFilterStudent");
   sel.innerHTML = '<option value="">全部学生</option>' + students.map(stu=>`
     <option value="${stu.id}">${stu.name}</option>
-  `).join('');
+  `).join("");
 }
 
-// 渲染打卡卡片列表
 function renderSignCards(){
-  const container = document.getElementById('signCardList');
+  const container = document.getElementById("signCardList");
   const today = getToday();
-  const sid = document.getElementById('signFilterStudent').value;
-  const sDate = document.getElementById('signFilterDate').value || today;
-  const status = document.getElementById('signFilterStatus').value;
+  const sid = document.getElementById("signFilterStudent").value;
+  const sDate = document.getElementById("signFilterDate").value || today;
+  const status = document.getElementById("signFilterStatus").value;
   const type = currentSignType;
 
-  if(students.length === 0){
+  if (students.length === 0) {
     container.innerHTML = '<div class="col-span-full text-center py-10 text-gray-500">暂无学生，请先添加学生</div>';
     return;
   }
 
   let list = [...students];
-  if(sid) list = list.filter(s=>s.id == sid);
-
-  const typeText = {morning:'早读',noon:'午自习',night:'晚自习'}[type];
+  if (sid) list = list.filter(s=>s.id == sid);
+  const typeText = {morning:"早读",noon:"午自习",night:"晚自习"}[type];
 
   const html = list.map(stu=>{
     const log = signs.find(x=>x.studentId == stu.id && x.date == sDate && x.type === type);
     const isDone = !!log;
-
-    if(status === '1' && !isDone) return '';
-    if(status === '0' && isDone) return '';
-
+    if (status === "1" && !isDone) return "";
+    if (status === "0" && isDone) return "";
     return `
     <div onclick="doSign(${stu.id},'${stu.name}','${type}')" 
          class="bg-white border rounded-xl p-4 card-shadow cursor-pointer">
       <div class="flex justify-between items-start mb-2">
         <h3 class="font-bold text-lg">${stu.name}</h3>
       </div>
-      
       <div class="mb-3 text-center">
-        <span class="inline-block px-3 py-1 rounded-full text-sm ${isDone ? 'bg-success/10 text-success' : 'bg-warning/10 text-warning'}">
-          ${typeText}：${isDone ? '已打卡' : '未打卡'}
+        <span class="inline-block px-3 py-1 rounded-full text-sm ${isDone ? "bg-success/10 text-success" : "bg-warning/10 text-warning"}">
+          ${typeText}：${isDone ? "已打卡" : "未打卡"}
         </span>
       </div>
-      
-      ${isDone ? `
-      <div class="text-center text-sm text-gray-500 mb-2">
-        打卡时间：${log.time}
-      </div>
-      ` : ''}
-      
-      <div class="text-center text-xs text-gray-400">
-        点击卡片即可打卡
-      </div>
-    </div>
-    `;
-  }).join('');
+      ${isDone ? `<div class="text-center text-sm text-gray-500 mb-2">打卡时间：${log.time}</div>` : ""}
+      <div class="text-center text-xs text-gray-400">点击卡片即可打卡</div>
+    </div>`;
+  }).join("");
 
   container.innerHTML = html || '<div class="col-span-full text-center py-6 text-gray-500">暂无匹配记录</div>';
   calcSignStats();
 }
 
-// 计算打卡统计
 function calcSignStats(){
   const today = getToday();
   const total = students.length;
-  const mCnt = signs.filter(x=>x.date == today && x.type==='morning').length;
-  const nCnt = signs.filter(x=>x.date == today && x.type==='noon').length;
-  const niCnt = signs.filter(x=>x.date == today && x.type==='night').length;
-
-  document.getElementById('signTotal').textContent = total;
-  document.getElementById('signDoneMorning').textContent = mCnt;
-  document.getElementById('signDoneNoon').textContent = nCnt;
-  document.getElementById('signDoneNight').textContent = niCnt;
+  const mCnt = signs.filter(x=>x.date == today && x.type==="morning").length;
+  const nCnt = signs.filter(x=>x.date == today && x.type==="noon").length;
+  const niCnt = signs.filter(x=>x.date == today && x.type==="night").length;
+  document.getElementById("signTotal").textContent = total;
+  document.getElementById("signDoneMorning").textContent = mCnt;
+  document.getElementById("signDoneNoon").textContent = nCnt;
+  document.getElementById("signDoneNight").textContent = niCnt;
 }
 
-// 执行打卡
-function doSign(studentId, studentName, type){
+async function doSign(studentId, studentName, type){
   const today = getToday();
   const now = new Date();
-  const nowDateStr = now.toISOString().split('T')[0];
-  
-  if (nowDateStr !== today) {
-    toast('只能打卡当天，不能补卡/提前打卡！');
-    return;
-  }
-
+  const nowDateStr = now.toISOString().split("T")[0];
+  if (nowDateStr !== today) { toast("只能打卡当天，不能补卡/提前打卡！"); return; }
   const exists = signs.find(x=>x.studentId == studentId && x.date == today && x.type===type);
-  if(exists){
-    toast(`${studentName} 今日已打卡，无需重复`);
-    return;
-  }
+  if (exists) { toast(`${studentName} 今日已打卡，无需重复`); return; }
 
   const nowTimeStr = now.toLocaleTimeString();
-  const typeText = {morning:'早读',noon:'午自习',night:'晚自习'}[type];
+  const typeText = {morning:"早读",noon:"午自习",night:"晚自习"}[type];
   const inTime = isInSignTime(type);
 
-  signs.unshift({
-    id: Date.now(),
-    studentId,
-    studentName,
-    date: today,
-    time: nowTimeStr,
-    type: type
-  });
-  store.set('signs', signs);
+  signs.unshift({ id: Date.now(), studentId, studentName, date: today, time: nowTimeStr, type });
+  await store.set("signs", signs);
 
   const stu = students.find(s=>s.id == studentId);
   if (stu) {
     if (inTime) {
       stu.points += 0.5;
-      addPointRecord(stu.name, `${typeText}准时打卡`, 0.5, '系统', '正常打卡加分');
+      addPointRecord(stu.name, `${typeText}准时打卡`, 0.5, "系统", "正常打卡加分");
       toast(`${studentName} ${typeText}打卡成功 +0.5分`);
     } else {
       stu.points -= 0.5;
-      addPointRecord(stu.name, `${typeText}超时打卡`, -0.5, '系统', '超时打卡扣分');
+      addPointRecord(stu.name, `${typeText}超时打卡`, -0.5, "系统", "超时打卡扣分");
       toast(`${studentName} 已打卡但超时 -0.5分`);
     }
-    store.set('students', students);
+    await store.set("students", students);
     updateGroupPoints();
+    await store.set("groups", groups);
+    await store.set("records", records);
     renderAll();
   }
 }
 
-// 切换打卡类型
 function switchSignType(type){
   currentSignType = type;
-  document.querySelectorAll('.sign-tab').forEach(t => {
-    t.classList.remove('border-b-2', 'border-primary', 'text-primary');
+  document.querySelectorAll(".sign-tab").forEach(t => {
+    t.classList.remove("border-b-2", "border-primary", "text-primary");
   });
-  document.querySelector(`.sign-tab[data-type="${type}"]`).classList.add('border-b-2', 'border-primary', 'text-primary');
+  document.querySelector(`.sign-tab[data-type="${type}"]`).classList.add("border-b-2", "border-primary", "text-primary");
   renderSignCards();
 }
 
-// 导出全部打卡记录
 function exportAllSign(){
-  const typeMap = {morning:'早读',noon:'午自习',night:'晚自习'};
+  const typeMap = {morning:"早读",noon:"午自习",night:"晚自习"};
   const data = signs.map(s=>[s.date, s.studentName, typeMap[s.type]||s.type, s.time]);
-  exportCSV(data, '打卡记录表.csv', ['日期','姓名','打卡类型','打卡时间']);
+  exportCSV(data, "打卡记录表.csv", ["日期","姓名","打卡类型","打卡时间"]);
 }
 
-// 清空打卡记录
 function clearAllSign(){
-  openModal('清空打卡记录', `
+  openModal("清空打卡记录", `
     <input id="clearSignPwd" type="password" placeholder="请输入管理密码" class="w-full border rounded-lg px-4 py-3 mb-6 text-lg">
     <button onclick="confirmClearSign()" class="w-full py-4 bg-red-500 text-white rounded-xl text-lg">确认清空</button>
   `);
 }
-window.confirmClearSign = () => {
-  const pwd = document.getElementById('clearSignPwd').value;
+
+window.confirmClearSign = async () => {
+  const pwd = document.getElementById("clearSignPwd").value;
   if (pwd === CLEAR_PASSWORD) {
     signs = [];
-    store.set('signs', signs);
+    await store.set("signs", signs);
     renderSignCards();
     closeModal();
-    toast('已清空所有打卡记录');
+    toast("已清空所有打卡记录");
   } else {
-    toast('密码错误');
+    toast("密码错误");
   }
 };
 
-// ========== 请假管理相关 ==========
 function renderLeaveSelects(){
-  const s = document.getElementById('filterStudent');
-  const t = document.getElementById('filterType');
-  s.innerHTML = '<option value="">全部学生</option>' + students.map(stu=>`<option value="${stu.id}">${stu.name}</option>`).join('');
-  t.innerHTML = '<option value="">全部类型</option>' + leaveTypes.map(type=>`<option value="${type}">${type}</option>`).join('');
+  const s = document.getElementById("filterStudent");
+  const t = document.getElementById("filterType");
+  s.innerHTML = '<option value="">全部学生</option>' + students.map(stu=>`<option value="${stu.id}">${stu.name}</option>`).join("");
+  t.innerHTML = '<option value="">全部类型</option>' + leaveTypes.map(type=>`<option value="${type}">${type}</option>`).join("");
 }
 
 function renderLeaves(){
-  const body = document.getElementById('leaveTableBody');
-  const studentId = document.getElementById('filterStudent').value;
-  const type = document.getElementById('filterType').value;
-  const month = document.getElementById('filterMonth').value;
-
+  const body = document.getElementById("leaveTableBody");
+  const studentId = document.getElementById("filterStudent").value;
+  const type = document.getElementById("filterType").value;
+  const month = document.getElementById("filterMonth").value;
   let list = [...leaves];
-  if(studentId) list = list.filter(l=>l.studentId == studentId);
-  if(type) list = list.filter(l=>l.type === type);
-  if(month) list = list.filter(l=>l.date.startsWith(month));
-
-  if(list.length===0){
+  if (studentId) list = list.filter(l=>l.studentId == studentId);
+  if (type) list = list.filter(l=>l.type === type);
+  if (month) list = list.filter(l=>l.date.startsWith(month));
+  if (list.length===0) {
     body.innerHTML = '<tr><td colspan="6" class="text-center py-4 text-gray-500">暂无匹配记录</td></tr>';
     return;
   }
-
   body.innerHTML = list.map(l=>`
   <tr class="border-b">
     <td class="p-2 text-sm">${l.date}</td>
     <td class="p-2 text-sm">${getWeekText(l.date)}</td>
     <td class="p-2 text-sm">${l.studentName}</td>
     <td class="p-2 text-sm">${l.type}</td>
-    <td class="p-2 text-sm">${l.remark || '-'}</td>
+    <td class="p-2 text-sm">${l.remark || "-"}</td>
     <td class="p-2 text-sm space-x-2">
       <button onclick="editLeave(${l.id})" class="text-primary text-xs">编辑</button>
       <button onclick="delLeave(${l.id})" class="text-danger text-xs">删除</button>
     </td>
-  </tr>`).join('');
+  </tr>`).join("");
 }
 
-function addLeave(studentId, studentName, date, type, remark){
-  if(!studentId || !date || !type){ toast('信息不完整'); return; }
+async function addLeave(studentId, studentName, date, type, remark){
+  if (!studentId || !date || !type) { toast("信息不完整"); return; }
   leaves.unshift({ id:Date.now(), studentId, studentName, date, type, remark });
-  store.set('leaves', leaves);
+  await store.set("leaves", leaves);
   renderLeaves();
 }
 
 function editLeave(id){
   const l = leaves.find(x=>x.id==id);
-  if(!l) return;
-  openModal('编辑请假',`
+  if (!l) return;
+  openModal("编辑请假",`
     <select id="editStu" class="w-full border rounded-lg px-3 py-2 mb-3">
-      ${students.map(s=>`<option value="${s.id}" ${s.id==l.studentId?'selected':''}>${s.name}</option>`)}
+      ${students.map(s=>`<option value="${s.id}" ${s.id==l.studentId?"selected":""}>${s.name}</option>`)}
     </select>
     <input type="date" id="editDate" value="${l.date}" class="w-full border rounded-lg px-3 py-2 mb-3" onchange="autoSetEditWeek()">
     <input type="text" id="editWeek" readonly class="w-full border rounded-lg px-3 py-2 mb-3 bg-gray-50" placeholder="自动星期">
     <select id="editType" class="w-full border rounded-lg px-3 py-2 mb-3">
-      ${leaveTypes.map(t=>`<option value="${t}" ${t==l.type?'selected':''}>${t}</option>`)}
+      ${leaveTypes.map(t=>`<option value="${t}" ${t==l.type?"selected":""}>${t}</option>`)}
     </select>
     <input id="editRemark" placeholder="备注" value="${l.remark}" class="w-full border rounded-lg px-3 py-2 mb-4">
     <button onclick="saveEditLeave(${id})" class="w-full bg-primary text-white py-3 rounded-lg">保存</button>
   `);
   setTimeout(()=>{
-    document.getElementById('editWeek').value = getWeekText(l.date);
+    document.getElementById("editWeek").value = getWeekText(l.date);
   },100);
 }
 
 function autoSetEditWeek(){
-  const date = document.getElementById('editDate').value;
-  document.getElementById('editWeek').value = getWeekText(date);
+  const date = document.getElementById("editDate").value;
+  document.getElementById("editWeek").value = getWeekText(date);
 }
 
-function saveEditLeave(id){
+async function saveEditLeave(id){
   const l = leaves.find(x=>x.id==id);
-  const stuId = document.getElementById('editStu').value;
+  const stuId = document.getElementById("editStu").value;
   const stu = students.find(s=>s.id==stuId);
-  const date = document.getElementById('editDate').value;
-  const type = document.getElementById('editType').value;
-  const remark = document.getElementById('editRemark').value;
-  if(!stuId || !date || !type){ toast('信息不完整'); return; }
+  const date = document.getElementById("editDate").value;
+  const type = document.getElementById("editType").value;
+  const remark = document.getElementById("editRemark").value;
+  if (!stuId || !date || !type) { toast("信息不完整"); return; }
   l.studentId = stuId;
   l.studentName = stu.name;
   l.date = date;
   l.type = type;
   l.remark = remark;
-  store.set('leaves', leaves);
+  await store.set("leaves", leaves);
   renderLeaves();
   closeModal();
-  toast('保存成功');
+  toast("保存成功");
 }
 
-function delLeave(id){
-  if(!confirm('确定删除该请假记录？')) return;
+async function delLeave(id){
+  if (!confirm("确定删除该请假记录？")) return;
   leaves = leaves.filter(x=>x.id!=id);
-  store.set('leaves', leaves);
+  await store.set("leaves", leaves);
   renderLeaves();
 }
 
-// 四种导出
 function exportAllLeave(){
-  const data = leaves.map(l=>[l.date, getWeekText(l.date), l.studentName, l.type, l.remark||'']);
-  exportCSV(data,'全部请假记录表.csv',['日期','星期','姓名','请假类型','备注']);
+  const data = leaves.map(l=>[l.date, getWeekText(l.date), l.studentName, l.type, l.remark||""]);
+  exportCSV(data,"全部请假记录表.csv",["日期","星期","姓名","请假类型","备注"]);
 }
 function exportStudentLeave(){
-  const sid = document.getElementById('filterStudent').value;
-  const name = document.getElementById('filterStudent').options[document.getElementById('filterStudent').selectedIndex].text;
-  if(!sid){toast('请选择学生');return;}
+  const sid = document.getElementById("filterStudent").value;
+  const name = document.getElementById("filterStudent").options[document.getElementById("filterStudent").selectedIndex].text;
+  if (!sid) { toast("请选择学生"); return; }
   const list = leaves.filter(l=>l.studentId==sid);
-  const data = list.map(l=>[l.date, getWeekText(l.date), l.studentName, l.type, l.remark||'']);
-  exportCSV(data,`${name}请假记录.csv`, ['日期','星期','姓名','请假类型','备注']);
+  const data = list.map(l=>[l.date, getWeekText(l.date), l.studentName, l.type, l.remark||""]);
+  exportCSV(data,`${name}请假记录.csv`, ["日期","星期","姓名","请假类型","备注"]);
 }
 function exportTypeLeave(){
-  const type = document.getElementById('filterType').value;
-  if(!type){toast('请选择类型');return;}
+  const type = document.getElementById("filterType").value;
+  if (!type) { toast("请选择类型"); return; }
   const list = leaves.filter(l=>l.type===type);
-  const data = list.map(l=>[l.date, getWeekText(l.date), l.studentName, l.type, l.remark||'']);
-  exportCSV(data,`${type}请假记录.csv`, ['日期','星期','姓名','请假类型','备注']);
+  const data = list.map(l=>[l.date, getWeekText(l.date), l.studentName, l.type, l.remark||""]);
+  exportCSV(data,`${type}请假记录.csv`, ["日期","星期","姓名","请假类型","备注"]);
 }
 function exportMonthLeave(){
-  const month = document.getElementById('filterMonth').value;
-  if(!month){toast('请选择月份');return;}
+  const month = document.getElementById("filterMonth").value;
+  if (!month) { toast("请选择月份"); return; }
   const list = leaves.filter(l=>l.date.startsWith(month));
-  const data = list.map(l=>[l.date, getWeekText(l.date), l.studentName, l.type, l.remark||'']);
-  exportCSV(data,`${month}月份请假记录.csv`, ['日期','星期','姓名','请假类型','备注']);
+  const data = list.map(l=>[l.date, getWeekText(l.date), l.studentName, l.type, l.remark||""]);
+  exportCSV(data,`${month}月份请假记录.csv`, ["日期","星期","姓名","请假类型","备注"]);
 }
 
 function renderStats() {
-  document.getElementById('groupCount').textContent = groups.length;
-  document.getElementById('studentCount').textContent = students.length;
+  document.getElementById("groupCount").textContent = groups.length;
+  document.getElementById("studentCount").textContent = students.length;
   const total = students.reduce((s, i) => s + (i.points || 0), 0);
   const avg = students.length ? (total / students.length).toFixed(1) : 0;
-  document.getElementById('avgPoints').textContent = avg;
-  const cls = store.getClass();
-  document.getElementById('className').value = cls.name;
-  document.getElementById('classSlogan').value = cls.slogan;
+  document.getElementById("avgPoints").textContent = avg;
 }
 
-// 渲染批量选择学生列表
 function renderBatchStudentList() {
-  const container = document.getElementById('batchStudentList');
+  const container = document.getElementById("batchStudentList");
   if (students.length === 0) {
     container.innerHTML = '<div class="col-span-full text-center text-gray-500 py-4">请先添加学生</div>';
     return;
@@ -1093,12 +1004,12 @@ function renderBatchStudentList() {
       <input type="checkbox" class="student-checkbox w-4 h-4" value="${s.id}">
       <span>${s.name}</span>
     </label>
-  `).join('');
+  `).join("");
 }
 
 function renderStudents() {
-  const container = document.getElementById('studentCardList');
-  const keyword = document.getElementById('searchStudent').value.toLowerCase();
+  const container = document.getElementById("studentCardList");
+  const keyword = document.getElementById("searchStudent").value.toLowerCase();
   const list = students.filter(s => s.name.toLowerCase().includes(keyword));
   if (!list.length) {
     container.innerHTML = '<div class="col-span-full text-center py-6 text-gray-500">暂无匹配学生</div>';
@@ -1110,10 +1021,10 @@ function renderStudents() {
     <div class="bg-white rounded-xl p-4 card-shadow">
       <div class="flex justify-between items-start mb-2">
         <h3 class="font-bold text-lg">${s.name}</h3>
-        <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">${group ? group.name : '未分组'}</span>
+        <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">${group ? group.name : "未分组"}</span>
       </div>
       <div class="flex justify-between items-center mb-3">
-        <span class="text-xl font-bold ${s.points < 0 ? 'text-danger' : 'text-secondary'}">${s.points || 0}</span>
+        <span class="text-xl font-bold ${s.points < 0 ? "text-danger" : "text-secondary"}">${s.points || 0}</span>
         <span class="text-sm text-gray-500">积分</span>
       </div>
       <div class="grid grid-cols-2 gap-2">
@@ -1123,11 +1034,11 @@ function renderStudents() {
         <button onclick="delStudent(${s.id})" class="text-xs bg-danger text-white py-1.5 rounded">删除</button>
       </div>
     </div>`;
-  }).join('');
+  }).join("");
 }
 
 function renderGroups() {
-  const container = document.getElementById('groupList');
+  const container = document.getElementById("groupList");
   if (!groups.length) {
     container.innerHTML = '<div class="col-span-full text-center py-6 text-gray-500">暂无小组</div>';
     return;
@@ -1137,7 +1048,7 @@ function renderGroups() {
     <h3 class="font-bold">${g.name}</h3>
     <div class="flex justify-between my-2">
       <span class="text-sm">总积分</span>
-      <span class="font-bold ${g.points < 0 ? 'text-danger' : 'text-primary'}">${g.points || 0}</span>
+      <span class="font-bold ${g.points < 0 ? "text-danger" : "text-primary"}">${g.points || 0}</span>
     </div>
     <div class="grid grid-cols-2 gap-2">
       <button onclick="editGroup(${g.id})" class="py-1.5 bg-primary text-white rounded text-sm">编辑</button>
@@ -1147,7 +1058,7 @@ function renderGroups() {
 }
 
 function renderGoods() {
-  const container = document.getElementById('goodsList');
+  const container = document.getElementById("goodsList");
   if (!goods.length) {
     container.innerHTML = '<div class="col-span-full text-center py-6 text-gray-500">暂无商品</div>';
     return;
@@ -1163,11 +1074,11 @@ function renderGoods() {
       <button onclick="editGoods(${g.id})" class="py-1.5 bg-primary text-white rounded text-sm">编辑</button>
       <button onclick="delGoods(${g.id})" class="py-1.5 bg-danger text-white rounded text-sm">删除</button>
     </div>
-  </div>`).join('');
+  </div>`).join("");
 }
 
 function renderRecords() {
-  const body = document.getElementById('recordTable');
+  const body = document.getElementById("recordTable");
   if (!records.length) {
     body.innerHTML = '<tr><td colspan="6" class="text-center py-4 text-gray-500">暂无记录</td></tr>';
     return;
@@ -1177,16 +1088,16 @@ function renderRecords() {
     <td class="p-2 text-sm">${r.time}</td>
     <td class="p-2 text-sm">${r.target}</td>
     <td class="p-2 text-sm">${r.type}</td>
-    <td class="p-2 text-sm ${r.point > 0 ? 'text-success' : 'text-danger'}">${r.point > 0 ? '+' + r.point : r.point}</td>
+    <td class="p-2 text-sm ${r.point > 0 ? "text-success" : "text-danger"}">${r.point > 0 ? "+" + r.point : r.point}</td>
     <td class="p-2 text-sm">${r.operator}</td>
-    <td class="p-2 text-sm">${r.remark || '-'}</td>
-  </tr>`).join('');
+    <td class="p-2 text-sm">${r.remark || "-"}</td>
+  </tr>`).join("");
 }
 
-function renderRank(type = 'student') {
-  const container = document.getElementById('rankContainer');
+function renderRank(type = "student") {
+  const container = document.getElementById("rankContainer");
   let data = [];
-  if (type === 'student') {
+  if (type === "student") {
     data = [...students].sort((a, b) => b.points - a.points);
   } else {
     data = [...groups].sort((a, b) => b.points - a.points);
@@ -1196,101 +1107,101 @@ function renderRank(type = 'student') {
     return;
   }
   container.innerHTML = data.map((item, i) => {
-    let cls = '';
-    if (i === 0) cls = 'rank-1';
-    else if (i === 1) cls = 'rank-2';
-    else if (i === 2) cls = 'rank-3';
+    let cls = "";
+    if (i === 0) cls = "rank-1";
+    else if (i === 1) cls = "rank-2";
+    else if (i === 2) cls = "rank-3";
     return `
     <div class="border p-3 rounded-lg flex justify-between items-center ${cls}">
       <div class="flex items-center">
         <span class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center text-xs mr-2">${i + 1}</span>
         <span>${item.name}</span>
       </div>
-      <span class="font-bold ${item.points < 0 ? 'text-danger' : ''}">${item.points || 0}</span>
+      <span class="font-bold ${item.points < 0 ? "text-danger" : ""}">${item.points || 0}</span>
     </div>`;
-  }).join('');
+  }).join("");
 }
 
 function renderSelects() {
-  const sSelect = document.getElementById('pointStudent');
-  const gSelect = document.getElementById('pointGroup');
-  sSelect.innerHTML = '<option value="">选择学生</option>' + students.map(s => `<option value="${s.id}">${s.name}</option>`).join('');
-  gSelect.innerHTML = '<option value="">选择小组</option>' + groups.map(g => `<option value="${g.id}">${g.name}</option>`).join('');
+  const sSelect = document.getElementById("pointStudent");
+  const gSelect = document.getElementById("pointGroup");
+  sSelect.innerHTML = '<option value="">选择学生</option>' + students.map(s => `<option value="${s.id}">${s.name}</option>`).join("");
+  gSelect.innerHTML = '<option value="">选择小组</option>' + groups.map(g => `<option value="${g.id}">${g.name}</option>`).join("");
 }
 
-// 编辑学生姓名
 function editStudentName(id) {
   const stu = students.find(s => s.id == id);
   if (!stu) return;
-  openModal('修改学生姓名', `
+  openModal("修改学生姓名", `
     <input id="newStuName" value="${stu.name}" class="w-full border rounded-lg px-4 py-3 mb-6 text-lg">
     <button onclick="saveEditStudent(${id})" class="w-full py-4 bg-primary text-white rounded-xl text-lg">保存</button>
   `);
 }
-function saveEditStudent(id) {
-  const newName = document.getElementById('newStuName').value.trim();
-  if (!newName) { toast('姓名不能为空'); return; }
+
+async function saveEditStudent(id) {
+  const newName = document.getElementById("newStuName").value.trim();
+  if (!newName) { toast("姓名不能为空"); return; }
   students.find(s => s.id == id).name = newName;
-  store.set('students', students);
+  await store.set("students", students);
   renderAll();
   closeModal();
-  toast('修改成功');
+  toast("修改成功");
 }
 
-// 编辑小组
 function editGroup(id) {
   const group = groups.find(g => g.id == id);
   if (!group) return;
-  openModal('修改小组名称', `
+  openModal("修改小组名称", `
     <input id="newGroupName" value="${group.name}" class="w-full border rounded-lg px-4 py-3 mb-6 text-lg">
     <button onclick="saveEditGroup(${id})" class="w-full py-4 bg-primary text-white rounded-xl text-lg">保存</button>
   `);
 }
-function saveEditGroup(id) {
-  const newName = document.getElementById('newGroupName').value.trim();
-  if (!newName) { toast('小组名称不能为空'); return; }
+
+async function saveEditGroup(id) {
+  const newName = document.getElementById("newGroupName").value.trim();
+  if (!newName) { toast("小组名称不能为空"); return; }
   groups.find(g => g.id == id).name = newName;
-  store.set('groups', groups);
+  await store.set("groups", groups);
   renderAll();
   closeModal();
-  toast('修改成功');
+  toast("修改成功");
 }
 
-// 操作函数
-function saveClass() {
-  const name = document.getElementById('className').value;
-  const slogan = document.getElementById('classSlogan').value;
-  if(!name){toast('请输入班级名称');return;}
-  store.setClass({ name, slogan });
-  toast('保存成功');
+async function saveClass() {
+  const name = document.getElementById("className").value;
+  const slogan = document.getElementById("classSlogan").value;
+  if (!name) { toast("请输入班级名称"); return; }
+  await store.setClass({ name, slogan });
+  toast("保存成功");
 }
 
-function addStudent(name, groupId = 0) {
-  if(!name){toast('请输入学生姓名');return;}
+async function addStudent(name, groupId = 0) {
+  if (!name) { toast("请输入学生姓名"); return; }
   students.push({ id: Date.now(), name, groupId, points: 0 });
-  store.set('students', students);
+  await store.set("students", students);
   updateGroupPoints();
+  await store.set("groups", groups);
   renderAll();
 }
 
-function addGroup(name) {
-  if(!name){toast('请输入小组名称');return;}
+async function addGroup(name) {
+  if (!name) { toast("请输入小组名称"); return; }
   groups.push({ id: Date.now(), name, points: 0 });
-  store.set('groups', groups);
+  await store.set("groups", groups);
   renderAll();
 }
 
-function addGoods(name, points) {
-  if(!name || !points || points<=0){toast('请填写正确的商品信息');return;}
+async function addGoods(name, points) {
+  if (!name || !points || points<=0) { toast("请填写正确的商品信息"); return; }
   goods.push({ id: Date.now(), name, points:Number(points) });
-  store.set('goods', goods);
+  await store.set("goods", goods);
   renderAll();
 }
 
 function editGoods(id) {
   const item = goods.find(g => g.id == id);
   if (!item) return;
-  openModal('编辑商品', `
+  openModal("编辑商品", `
     <div class="space-y-4">
       <input id="editGoodsName" value="${item.name}" class="w-full border rounded-lg px-4 py-3 text-lg">
       <input type="number" id="editGoodsPoint" value="${item.points}" class="w-full border rounded-lg px-3 py-3 text-lg">
@@ -1299,110 +1210,112 @@ function editGoods(id) {
   `);
 }
 
-function saveEditGoods(id) {
+async function saveEditGoods(id) {
   const g = goods.find(i => i.id == id);
   if (g) {
-    const name = document.getElementById('editGoodsName').value.trim();
-    const point = Number(document.getElementById('editGoodsPoint').value);
-    if(!name || !point || point<=0){toast('请填写正确信息');return;}
+    const name = document.getElementById("editGoodsName").value.trim();
+    const point = Number(document.getElementById("editGoodsPoint").value);
+    if (!name || !point || point<=0) { toast("请填写正确信息"); return; }
     g.name = name;
     g.points = point;
-    store.set('goods', goods);
+    await store.set("goods", goods);
     renderAll();
     closeModal();
-    toast('保存成功');
+    toast("保存成功");
   }
 }
 
-function delStudent(id) {
-  if (!confirm('确定删除该学生？')) return;
+async function delStudent(id) {
+  if (!confirm("确定删除该学生？")) return;
   students = students.filter(s => s.id != id);
-  store.set('students', students);
+  await store.set("students", students);
   updateGroupPoints();
+  await store.set("groups", groups);
   renderAll();
 }
 
-function delGroup(id) {
-  if (!confirm('删除小组会将学生设为未分组，确定删除？')) return;
+async function delGroup(id) {
+  if (!confirm("删除小组会将学生设为未分组，确定删除？")) return;
   groups = groups.filter(g => g.id != id);
   students.forEach(s => { if (s.groupId == id) s.groupId = 0; });
-  store.set('groups', groups);
-  store.set('students', students);
+  await store.set("groups", groups);
+  await store.set("students", students);
   updateGroupPoints();
   renderAll();
 }
 
-function delGoods(id) {
-  if (!confirm('确定删除该商品？')) return;
+async function delGoods(id) {
+  if (!confirm("确定删除该商品？")) return;
   goods = goods.filter(g => g.id != id);
-  store.set('goods', goods);
+  await store.set("goods", goods);
   renderAll();
 }
 
 function changeGroup(id) {
   const stu = students.find(s => s.id == id);
-  openModal('修改分组', `
+  openModal("修改分组", `
     <select id="newGroupId" class="w-full border rounded-lg px-4 py-3 mb-6 text-lg">
       <option value="0">未分组</option>
-      ${groups.map(g => `<option value="${g.id}" ${g.id == stu.groupId ? 'selected' : ''}>${g.name}</option>`).join('')}
+      ${groups.map(g => `<option value="${g.id}" ${g.id == stu.groupId ? "selected" : ""}>${g.name}</option>`).join("")}
     </select>
     <button onclick="saveGroupChange(${id})" class="w-full py-4 bg-primary text-white rounded-xl text-lg">保存</button>
   `);
 }
 
-function saveGroupChange(id) {
-  const gid = document.getElementById('newGroupId').value;
+async function saveGroupChange(id) {
+  const gid = document.getElementById("newGroupId").value;
   students.find(s => s.id == id).groupId = gid;
-  store.set('students', students);
+  await store.set("students", students);
   updateGroupPoints();
+  await store.set("groups", groups);
   renderAll();
   closeModal();
-  toast('修改成功');
+  toast("修改成功");
 }
 
 function exchange(id) {
   const stu = students.find(s => s.id == id);
-  if(goods.length===0){toast('请先添加商品');closeModal();return;}
-  openModal('积分兑换', `
+  if (goods.length===0) { toast("请先添加商品"); closeModal(); return; }
+  openModal("积分兑换", `
     <p class="mb-4 text-lg">学生：${stu.name} &nbsp; 积分：${stu.points}</p>
     <select id="exchangeGoods" class="w-full border rounded-lg px-4 py-3 mb-6 text-lg">
-      ${goods.map(g => `<option value="${g.id}" data-p="${g.points}">${g.name} (${g.points}积分)</option>`).join('')}
+      ${goods.map(g => `<option value="${g.id}" data-p="${g.points}">${g.name} (${g.points}积分)</option>`).join("")}
     </select>
     <button onclick="doExchange(${id})" class="w-full py-4 bg-primary text-white rounded-xl text-lg">确认兑换</button>
   `);
 }
 
-function doExchange(id) {
+async function doExchange(id) {
   const stu = students.find(s => s.id == id);
-  const select = document.getElementById('exchangeGoods');
+  const select = document.getElementById("exchangeGoods");
   const p = Number(select.options[select.selectedIndex].dataset.p);
-  const gname = select.options[select.selectedIndex].text.split(' ')[0];
+  const gname = select.options[select.selectedIndex].text.split(" ")[0];
   
   if (stu.points < p) {
-    toast('积分不足，无法兑换');
+    toast("积分不足，无法兑换");
     return;
   }
   
   stu.points -= p;
-  addPointRecord(stu.name, '商品兑换', -p, '兑换');
-  store.set('students', students);
+  addPointRecord(stu.name, "商品兑换", -p, "兑换");
+  await store.set("students", students);
   updateGroupPoints();
+  await store.set("groups", groups);
+  await store.set("records", records);
   renderAll();
   closeModal();
-  toast('兑换成功');
+  toast("兑换成功");
 }
 
-// 模态框
 function openModal(title, body) {
-  document.getElementById('modalTitle').textContent = title;
-  document.getElementById('modalBody').innerHTML = body;
-  document.getElementById('modal').style.display = 'flex';
+  document.getElementById("modalTitle").textContent = title;
+  document.getElementById("modalBody").innerHTML = body;
+  document.getElementById("modal").style.display = "flex";
 }
 function closeModal() {
-  document.getElementById('modal').style.display = 'none';
+  document.getElementById("modal").style.display = "none";
 }
 
-// ===================== 静音自习养小树 =====================
 const treeStages = [
   { name: "小芽芽", icon: "🌱", star: 0 },
   { name: "嫩苗", icon: "🌿", star: 420 },
@@ -1458,14 +1371,16 @@ function updateMicStatusQuiet(type, text) {
   micStatusQuiet.textContent = text;
 }
 
-function levelAddScoreQuiet() {
+async function levelAddScoreQuiet() {
   rewardDomQuiet.textContent = `🎉 升级成功！全班每位同学 +${SCORE_PER_LEVEL} 分`;
   students.forEach(s => {
     s.points += SCORE_PER_LEVEL;
     addPointRecord(s.name, "静音自习升级", SCORE_PER_LEVEL, "系统", "班级养树奖励");
   });
-  store.set('students', students);
+  await store.set("students", students);
   updateGroupPoints();
+  await store.set("groups", groups);
+  await store.set("records", records);
   renderAll();
   setTimeout(() => {
     if (starCountQuiet >= MAX_STAR) {
@@ -1476,8 +1391,8 @@ function levelAddScoreQuiet() {
   }, 3000);
 }
 
-function saveTreeDataQuiet() {
-  store.setTree({
+async function saveTreeDataQuiet() {
+  await store.setTree({
     starCount: starCountQuiet,
     quietTimer: quietTimerQuiet,
     isPaused: isPausedQuiet,
@@ -1487,8 +1402,8 @@ function saveTreeDataQuiet() {
   });
 }
 
-function loadTreeDataQuiet() {
-  const data = store.getTree();
+async function loadTreeDataQuiet() {
+  const data = await store.getTree();
   if (data) {
     starCountQuiet = data.starCount || 0;
     quietTimerQuiet = data.quietTimer || 0;
@@ -1509,15 +1424,12 @@ function updateTreeQuiet() {
       break;
     }
   }
-
   const treeAnim = document.getElementById("treeAnimation");
   const treeText = document.getElementById("treeStageText");
-  
   treeAnim.innerHTML = stage.icon;
   treeText.innerHTML = stage.name;
   treeAnim.classList.add("tree-shine");
   setTimeout(() => treeAnim.classList.remove("tree-shine"), 1200);
-
   if (starCountQuiet >= MAX_STAR) {
     rewardDomQuiet.textContent = "🎉 恭喜！班级养成终极神树！";
   }
@@ -1551,7 +1463,7 @@ function getDbQuiet() {
 
 function startLoopQuiet() {
   if (monitorIntervalQuiet) clearInterval(monitorIntervalQuiet);
-  monitorIntervalQuiet = setInterval(() => {
+  monitorIntervalQuiet = setInterval(async () => {
     if (isPausedQuiet) return;
     decibelQuiet = getDbQuiet();
     decibelDomQuiet.textContent = decibelQuiet + " dB";
@@ -1561,20 +1473,17 @@ function startLoopQuiet() {
       if (quietTimerQuiet >= NEED_SECOND && starCountQuiet < MAX_STAR) {
         starCountQuiet++;
         quietTimerQuiet = 0;
-
-        // 420星升一级
         if (treeLevel < 9 && starCountQuiet >= (treeLevel + 1) * 420) {
           treeLevel++;
-          levelAddScoreQuiet();
+          await levelAddScoreQuiet();
         }
-
         updateTreeQuiet();
-        saveTreeDataQuiet();
+        await saveTreeDataQuiet();
       }
     } else {
       quietTimerQuiet = 0;
       timerDomQuiet.textContent = "0s";
-      saveTreeDataQuiet();
+      await saveTreeDataQuiet();
     }
   }, 1000);
 }
@@ -1585,7 +1494,7 @@ async function startMonitorQuiet() {
     isPausedQuiet = false;
     updateMicStatusQuiet("active", "🎤 继续监测，数据已保留");
     startBtnQuiet.textContent = "开始监测";
-    saveTreeDataQuiet();
+    await saveTreeDataQuiet();
     return;
   }
   const ok = await initMicQuiet();
@@ -1617,7 +1526,6 @@ function resetMonitorQuiet() {
   rewardDomQuiet.textContent = "每升一级，全班每位同学奖励 +2 分";
 }
 
-// ===================== 书声朗朗养小树（新增） =====================
 const readTreeStages = [
   { name: "小芽芽", icon: "🌱", star: 0 },
   { name: "嫩苗", icon: "🌿", star: 420 },
@@ -1693,14 +1601,16 @@ function readMergeTrees() {
   readRenderMergedTree();
 }
 
-function readLevelAddScore() {
+async function readLevelAddScore() {
   readRewardDom.textContent = `🎉 升级成功！全班每位同学 +${READ_SCORE_PER_LEVEL} 分`;
   students.forEach(s => {
     s.points += READ_SCORE_PER_LEVEL;
     addPointRecord(s.name, "书声朗朗升级", READ_SCORE_PER_LEVEL, "系统", "朗读养树奖励");
   });
-  store.set('students', students);
+  await store.set("students", students);
   updateGroupPoints();
+  await store.set("groups", groups);
+  await store.set("records", records);
   renderAll();
   setTimeout(() => {
     if (readStarCount >= READ_MAX_STAR) {
@@ -1711,8 +1621,8 @@ function readLevelAddScore() {
   }, 3000);
 }
 
-function readSaveData() {
-  store.setReadTree({
+async function readSaveData() {
+  await store.setReadTree({
     starCount: readStarCount,
     readTimer,
     isPaused: readIsPaused,
@@ -1722,8 +1632,8 @@ function readSaveData() {
   });
 }
 
-function readLoadData() {
-  const data = store.getReadTree();
+async function readLoadData() {
+  const data = await store.getReadTree();
   if (data) {
     readStarCount = data.starCount || 0;
     readTimer = data.readTimer || 0;
@@ -1791,7 +1701,7 @@ function readGetDb() {
 
 function readStartLoop() {
   if (readMonitorInterval) clearInterval(readMonitorInterval);
-  readMonitorInterval = setInterval(() => {
+  readMonitorInterval = setInterval(async () => {
     if (readIsPaused) return;
     readDecibel = readGetDb();
     readDecibelDom.textContent = readDecibel + " dB";
@@ -1801,21 +1711,18 @@ function readStartLoop() {
       if (readTimer >= READ_NEED_SECOND && readStarCount < READ_MAX_STAR) {
         readStarCount++;
         readTimer = 0;
-
-        // 420星升一级
         if (readTreeLevel < 9 && readStarCount >= (readTreeLevel + 1) * 420) {
           readTreeLevel++;
-          readLevelAddScore();
+          await readLevelAddScore();
         }
-
         readMergeTrees();
         readUpdateTree();
-        readSaveData();
+        await readSaveData();
       }
     } else {
       readTimer = 0;
       readTimerDom.textContent = "0s";
-      readSaveData();
+      await readSaveData();
     }
   }, 1000);
 }
@@ -1826,7 +1733,7 @@ async function readStartMonitor() {
     readIsPaused = false;
     updateReadMicStatus("active", "🎤 继续聆听朗读，数据已保留");
     readStartBtn.textContent = "开始监测";
-    readSaveData();
+    await readSaveData();
     return;
   }
   const ok = await readInitMic();
@@ -1859,112 +1766,94 @@ function readResetMonitor() {
   readRewardDom.textContent = "大声朗读达标，每升一级全班每人 +2 分";
 }
 
-// ===================== 初始化结束 =====================
+document.addEventListener("DOMContentLoaded", async () => {
+  await renderAll();
 
-// 初始化
-document.addEventListener('DOMContentLoaded', () => {
-  startAutoCheckTimer();
-  
-  renderAll();
-  
-  // 静音自习初始化
   initQuietUI();
-  loadTreeDataQuiet();
+  await loadTreeDataQuiet();
   if (isPausedQuiet) {
     updateMicStatusQuiet("pause", "⏸ 已暂停监测，所有数据已保留");
     startBtnQuiet.textContent = "继续监测";
   }
 
-  // 书声朗朗初始化
   initReadUI();
-  readLoadData();
+  await readLoadData();
   if (readIsPaused) {
     updateReadMicStatus("pause", "⏸ 已暂停，朗读数据已保留");
     readStartBtn.textContent = "继续监测";
   }
 
-  // 导航切换：默认选中班级设置
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('nav-item-active'));
-  document.querySelector('.nav-btn[data-target="class"]').classList.add('nav-item-active');
-  document.querySelectorAll('.content-section').forEach(s => s.classList.add('hidden'));
-  document.getElementById('class').classList.remove('hidden');
+  document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("nav-item-active"));
+  document.querySelector('.nav-btn[data-target="class"]').classList.add("nav-item-active");
+  document.querySelectorAll(".content-section").forEach(s => s.classList.add("hidden"));
+  document.getElementById("class").classList.remove("hidden");
 
-  // 导航切换
-  document.querySelectorAll('.nav-btn').forEach(btn => {
+  document.querySelectorAll(".nav-btn").forEach(btn => {
     btn.onclick = () => {
-      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('nav-item-active'));
-      btn.classList.add('nav-item-active');
-      document.querySelectorAll('.content-section').forEach(s => s.classList.add('hidden'));
-      document.getElementById(btn.dataset.target).classList.remove('hidden');
+      document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("nav-item-active"));
+      btn.classList.add("nav-item-active");
+      document.querySelectorAll(".content-section").forEach(s => s.classList.add("hidden"));
+      document.getElementById(btn.dataset.target).classList.remove("hidden");
     };
   });
 
-  // 选项卡切换
-  document.querySelectorAll('.tab-btn').forEach(t => {
+  document.querySelectorAll(".tab-btn").forEach(t => {
     t.onclick = () => {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('border-b-2', 'border-primary', 'text-primary'));
-      t.classList.add('border-b-2', 'border-primary', 'text-primary');
-      document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
-      document.getElementById(t.dataset.tab).classList.remove('hidden');
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("border-b-2", "border-primary", "text-primary"));
+      t.classList.add("border-b-2", "border-primary", "text-primary");
+      document.querySelectorAll(".tab-content").forEach(c => c.classList.add("hidden"));
+      document.getElementById(t.dataset.tab).classList.remove("hidden");
     };
   });
 
-  // 打卡选项卡切换
-  document.querySelectorAll('.sign-tab').forEach(t => {
+  document.querySelectorAll(".sign-tab").forEach(t => {
     t.onclick = () => {
       switchSignType(t.dataset.type);
     };
   });
 
-  // 排行切换
-  document.querySelectorAll('.rank-tab').forEach(t => {
+  document.querySelectorAll(".rank-tab").forEach(t => {
     t.onclick = () => {
-      document.querySelectorAll('.rank-tab').forEach(r => r.classList.remove('bg-primary', 'text-white'));
-      t.classList.add('bg-primary', 'text-white');
+      document.querySelectorAll(".rank-tab").forEach(r => r.classList.remove("bg-primary", "text-white"));
+      t.classList.add("bg-primary", "text-white");
       renderRank(t.dataset.type);
     };
   });
 
-  // 班级保存
-  document.getElementById('saveClass').onclick = saveClass;
+  document.getElementById("saveClass").onclick = saveClass;
+  document.getElementById("closeModal").onclick = closeModal;
 
-  // 关闭模态框
-  document.getElementById('closeModal').onclick = closeModal;
-
-  // 添加学生
-  document.getElementById('addStudentBtn').onclick = () => openModal('新增学生', `
+  document.getElementById("addStudentBtn").onclick = () => openModal("新增学生", `
     <input id="newStuName" placeholder="姓名" class="w-full border rounded-lg px-4 py-3 mb-4 text-lg">
     <select id="newStuGroup" class="w-full border rounded-lg px-4 py-3 mb-6 text-lg">
-      <option value="0">未分组</option>${groups.map(g => `<option value="${g.id}">${g.name}</option>`).join('')}
+      <option value="0">未分组</option>${groups.map(g => `<option value="${g.id}">${g.name}</option>`).join("")}
     </select>
     <button onclick="addStudent(document.getElementById('newStuName').value,document.getElementById('newStuGroup').value);closeModal();toast('添加成功')" class="w-full py-4 bg-primary text-white rounded-xl text-lg">确认添加</button>
   `);
 
-  // 批量学生
-  document.getElementById('batchStudentBtn').onclick = () => openModal('批量添加学生', `
+  document.getElementById("batchStudentBtn").onclick = () => openModal("批量添加学生", `
     <textarea id="batchNames" rows="4" placeholder="一行一个名字" class="w-full border rounded-lg px-4 py-3 mb-4 text-lg"></textarea>
     <select id="batchGroup" class="w-full border rounded-lg px-4 py-3 mb-6 text-lg">
-      <option value="0">未分组</option>${groups.map(g => `<option value="${g.id}">${g.name}</option>`).join('')}
+      <option value="0">未分组</option>${groups.map(g => `<option value="${g.id}">${g.name}</option>`).join("")}
     </select>
     <button onclick="batchAddStu()" class="w-full py-4 bg-primary text-white rounded-xl text-lg">批量添加</button>
   `);
-  window.batchAddStu = () => {
-    const names = document.getElementById('batchNames').value.split('\n').filter(n => n.trim());
-    const gid = document.getElementById('batchGroup').value;
-    if(names.length===0){toast('请输入学生姓名');return;}
-    names.forEach(n => addStudent(n.trim(), gid));
+
+  window.batchAddStu = async () => {
+    const names = document.getElementById("batchNames").value.split("\n").filter(n => n.trim());
+    const gid = document.getElementById("batchGroup").value;
+    if (names.length===0) { toast("请输入学生姓名"); return; }
+    for (const n of names) await addStudent(n.trim(), gid);
     closeModal();
     toast(`已添加 ${names.length} 名学生`);
   };
 
-  // 添加小组
-  document.getElementById('addGroupBtn').onclick = () => openModal('新增小组', `
+  document.getElementById("addGroupBtn").onclick = () => openModal("新增小组", `
     <input id="newGroupName" placeholder="小组名称" class="w-full border rounded-lg px-4 py-3 mb-6 text-lg">
     <button onclick="addGroup(document.getElementById('newGroupName').value);closeModal();toast('添加成功')" class="w-full py-4 bg-primary text-white rounded-xl text-lg">确认添加</button>
   `);
 
-  // 添加商品
-  document.getElementById('addGoodsBtn').onclick = () => openModal('新增商品', `
+  document.getElementById("addGoodsBtn").onclick = () => openModal("新增商品", `
     <div class="space-y-4">
       <input id="newGoodsName" placeholder="商品名称" class="w-full border rounded-lg px-4 py-3 text-lg">
       <input type="number" id="newGoodsPoint" placeholder="所需积分" class="w-full border rounded-lg px-3 py-3 text-lg">
@@ -1972,8 +1861,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
   `);
 
-  // 请假管理绑定
-  document.getElementById('addLeaveBtn').onclick = () => openModal('新增请假',`
+  document.getElementById("addLeaveBtn").onclick = () => openModal("新增请假",`
     <select id="leaveStu" class="w-full border rounded-lg px-3 py-2 mb-3">
       <option value="">选择学生</option>
       ${students.map(s=>`<option value="${s.id}">${s.name}</option>`)}
@@ -1988,129 +1876,121 @@ document.addEventListener('DOMContentLoaded', () => {
   `);
   
   window.autoSetWeek = () => {
-    const date = document.getElementById('leaveDate').value;
-    document.getElementById('leaveWeek').value = getWeekText(date);
+    const date = document.getElementById("leaveDate").value;
+    document.getElementById("leaveWeek").value = getWeekText(date);
   };
   
-  window.saveNewLeave = () => {
-    const stuId = document.getElementById('leaveStu').value;
+  window.saveNewLeave = async () => {
+    const stuId = document.getElementById("leaveStu").value;
     const stu = students.find(s=>s.id==stuId);
-    const date = document.getElementById('leaveDate').value;
-    const type = document.getElementById('leaveType').value;
-    const remark = document.getElementById('leaveRemark').value;
-    addLeave(stuId, stu?.name, date, type, remark);
+    const date = document.getElementById("leaveDate").value;
+    const type = document.getElementById("leaveType").value;
+    const remark = document.getElementById("leaveRemark").value;
+    await addLeave(stuId, stu?.name, date, type, remark);
     closeModal();
-    toast('添加成功');
+    toast("添加成功");
   };
 
-  // 四个导出按钮
-  document.getElementById('exportAllLeave').onclick = exportAllLeave;
-  document.getElementById('exportStudentLeave').onclick = exportStudentLeave;
-  document.getElementById('exportTypeLeave').onclick = exportTypeLeave;
-  document.getElementById('exportMonthLeave').onclick = exportMonthLeave;
+  document.getElementById("exportAllLeave").onclick = exportAllLeave;
+  document.getElementById("exportStudentLeave").onclick = exportStudentLeave;
+  document.getElementById("exportTypeLeave").onclick = exportTypeLeave;
+  document.getElementById("exportMonthLeave").onclick = exportMonthLeave;
 
-  // 筛选
-  document.getElementById('filterStudent').addEventListener('change', renderLeaves);
-  document.getElementById('filterType').addEventListener('change', renderLeaves);
-  document.getElementById('filterMonth').addEventListener('change', renderLeaves);
+  document.getElementById("filterStudent").addEventListener("change", renderLeaves);
+  document.getElementById("filterType").addEventListener("change", renderLeaves);
+  document.getElementById("filterMonth").addEventListener("change", renderLeaves);
 
-  // 签到打卡绑定
-  document.getElementById('exportAllSign').onclick = exportAllSign;
-  document.getElementById('clearAllSign').onclick = clearAllSign;
-  document.getElementById('signFilterStudent').addEventListener('change', renderSignCards);
-  document.getElementById('signFilterDate').addEventListener('change', renderSignCards);
-  document.getElementById('signFilterStatus').addEventListener('change', renderSignCards);
+  document.getElementById("exportAllSign").onclick = exportAllSign;
+  document.getElementById("clearAllSign").onclick = clearAllSign;
+  document.getElementById("signFilterStudent").addEventListener("change", renderSignCards);
+  document.getElementById("signFilterDate").addEventListener("change", renderSignCards);
+  document.getElementById("signFilterStatus").addEventListener("change", renderSignCards);
 
-  // 静音自习按钮绑定
-  startBtnQuiet.addEventListener('click', startMonitorQuiet);
-  pauseBtnQuiet.addEventListener('click', pauseMonitorQuiet);
-  resetBtnQuiet.addEventListener('click', resetMonitorQuiet);
+  startBtnQuiet.addEventListener("click", startMonitorQuiet);
+  pauseBtnQuiet.addEventListener("click", pauseMonitorQuiet);
+  resetBtnQuiet.addEventListener("click", resetMonitorQuiet);
 
-  // 书声朗朗按钮绑定
-  readStartBtn.addEventListener('click', readStartMonitor);
-  readPauseBtn.addEventListener('click', readPauseMonitor);
-  readResetBtn.addEventListener('click', readResetMonitor);
+  readStartBtn.addEventListener("click", readStartMonitor);
+  readPauseBtn.addEventListener("click", readPauseMonitor);
+  readResetBtn.addEventListener("click", readResetMonitor);
 
-  // 导入积分
-  document.getElementById('importPointsBtn').onclick = () => {
-    openModal('导入积分', `
+  document.getElementById("importPointsBtn").onclick = () => {
+    openModal("导入积分", `
       <p class="mb-3 text-sm text-gray-600">格式：姓名,积分（一行一条）</p>
       <input type="file" id="pointsFile" accept=".csv" class="w-full border rounded-lg px-3 py-2 mb-4">
       <button onclick="doImportPoints()" class="w-full bg-primary text-white py-3 rounded-lg">确认导入</button>
     `);
   };
-  window.doImportPoints = () => {
-    const file = document.getElementById('pointsFile').files[0];
-    if(!file){ toast('请选择文件'); return; }
-    parseCSV(file, rows => {
+
+  window.doImportPoints = async () => {
+    const file = document.getElementById("pointsFile").files[0];
+    if (!file) { toast("请选择文件"); return; }
+    parseCSV(file, async rows => {
       let success = 0;
       rows.slice(1).forEach(row => {
         const name = row[0];
         const point = Number(row[1]) || 0;
         const stu = students.find(s => s.name === name);
-        if(stu){
+        if (stu) {
           stu.points = point;
-          addPointRecord(stu.name, '导入积分', point, '导入');
+          addPointRecord(stu.name, "导入积分", point, "导入");
           success++;
         }
       });
-      store.set('students', students);
+      await store.set("students", students);
       updateGroupPoints();
+      await store.set("groups", groups);
+      await store.set("records", records);
       renderAll();
       closeModal();
       toast(`导入完成，成功更新 ${success} 名学生积分`);
     });
   };
 
-  // 导入请假
-  document.getElementById('importLeaveBtn').onclick = () => {
-    openModal('导入请假', `
+  document.getElementById("importLeaveBtn").onclick = () => {
+    openModal("导入请假", `
       <p class="mb-3 text-sm text-gray-600">格式：日期,姓名,请假类型,备注</p>
       <input type="file" id="leaveFile" accept=".csv" class="w-full border rounded-lg px-3 py-2 mb-4">
       <button onclick="doImportLeave()" class="w-full bg-primary text-white py-3 rounded-lg">确认导入</button>
     `);
   };
-  window.doImportLeave = () => {
-    const file = document.getElementById('leaveFile').files[0];
-    if(!file){ toast('请选择文件'); return; }
-    parseCSV(file, rows => {
+
+  window.doImportLeave = async () => {
+    const file = document.getElementById("leaveFile").files[0];
+    if (!file) { toast("请选择文件"); return; }
+    parseCSV(file, async rows => {
       let success = 0;
       rows.slice(1).forEach(row => {
         const date = row[0];
         const name = row[1];
         const type = row[2];
-        const remark = row[3] || '';
+        const remark = row[3] || "";
         const stu = students.find(s => s.name === name);
-        if(stu && date && type){
-          leaves.unshift({
-            id: Date.now() + Math.random(),
-            studentId: stu.id,
-            studentName: stu.name,
-            date, type, remark
-          });
+        if (stu && date && type) {
+          leaves.unshift({ id: Date.now() + Math.random(), studentId: stu.id, studentName: stu.name, date, type, remark });
           success++;
         }
       });
-      store.set('leaves', leaves);
+      await store.set("leaves", leaves);
       renderLeaves();
       closeModal();
       toast(`导入完成，成功添加 ${success} 条请假`);
     });
   };
 
-  // 导入打卡
-  document.getElementById('importSignBtn').onclick = () => {
-    openModal('导入打卡', `
+  document.getElementById("importSignBtn").onclick = () => {
+    openModal("导入打卡", `
       <p class="mb-3 text-sm text-gray-600">格式：日期,姓名,打卡类型(早读/午自习/晚自习)</p>
       <input type="file" id="signFile" accept=".csv" class="w-full border rounded-lg px-3 py-2 mb-4">
       <button onclick="doImportSign()" class="w-full bg-primary text-white py-3 rounded-lg">确认导入</button>
     `);
   };
-  window.doImportSign = () => {
-    const file = document.getElementById('signFile').files[0];
-    if(!file){ toast('请选择文件'); return; }
-    const typeMap = { '早读':'morning', '午自习':'noon', '晚自习':'night' };
-    parseCSV(file, rows => {
+
+  window.doImportSign = async () => {
+    const file = document.getElementById("signFile").files[0];
+    if (!file) { toast("请选择文件"); return; }
+    const typeMap = { "早读":"morning", "午自习":"noon", "晚自习":"night" };
+    parseCSV(file, async rows => {
       let success = 0;
       rows.slice(1).forEach(row => {
         const date = row[0];
@@ -2118,250 +1998,256 @@ document.addEventListener('DOMContentLoaded', () => {
         const typeName = row[2];
         const type = typeMap[typeName];
         const stu = students.find(s => s.name === name);
-        if(stu && date && type){
-          const exists = signs.find(x => 
-            x.studentId === stu.id && 
-            x.date === date && 
-            x.type === type
-          );
-          if(!exists){
-            signs.unshift({
-              id: Date.now() + Math.random(),
-              studentId: stu.id,
-              studentName: stu.name,
-              date,
-              time: new Date().toLocaleTimeString(),
-              type
-            });
+        if (stu && date && type) {
+          const exists = signs.find(x => x.studentId === stu.id && x.date === date && x.type === type);
+          if (!exists) {
+            signs.unshift({ id: Date.now() + Math.random(), studentId: stu.id, studentName: stu.name, date, time: new Date().toLocaleTimeString(), type });
             success++;
           }
         }
       });
-      store.set('signs', signs);
+      await store.set("signs", signs);
       renderSignCards();
       closeModal();
       toast(`导入完成，成功添加 ${success} 条打卡`);
     });
   };
 
-  // 积分操作
-  document.getElementById('singleAdd').onclick = () => {
-    const id = document.getElementById('pointStudent').value;
-    const num = Number(document.getElementById('singlePoint').value);
-    const operator = document.getElementById('operator1').value.trim();
-    const remark = document.getElementById('remark1').value.trim();
-    if(!id || num<=0 || !operator){toast('请选择学生、输入积分和操作人');return;}
+  document.getElementById("singleAdd").onclick = async () => {
+    const id = document.getElementById("pointStudent").value;
+    const num = Number(document.getElementById("singlePoint").value);
+    const operator = document.getElementById("operator1").value.trim();
+    const remark = document.getElementById("remark1").value.trim();
+    if (!id || num<=0 || !operator) { toast("请选择学生、输入积分和操作人"); return; }
     const s = students.find(i => i.id == id);
     if (s) { 
       s.points += num; 
-      addPointRecord(s.name, '单人加分', num, operator, remark);
-      store.set('students', students); 
-      updateGroupPoints(); 
+      addPointRecord(s.name, "单人加分", num, operator, remark);
+      await store.set("students", students); 
+      updateGroupPoints();
+      await store.set("groups", groups);
+      await store.set("records", records);
       renderAll(); 
       toast(`+${num} 操作人：${operator}`);
     }
   };
-  document.getElementById('singleMinus').onclick = () => {
-    const id = document.getElementById('pointStudent').value;
-    const num = Number(document.getElementById('singlePoint').value);
-    const operator = document.getElementById('operator1').value.trim();
-    const remark = document.getElementById('remark1').value.trim();
-    if(!id || num<=0 || !operator){toast('请选择学生、输入积分和操作人');return;}
+
+  document.getElementById("singleMinus").onclick = async () => {
+    const id = document.getElementById("pointStudent").value;
+    const num = Number(document.getElementById("singlePoint").value);
+    const operator = document.getElementById("operator1").value.trim();
+    const remark = document.getElementById("remark1").value.trim();
+    if (!id || num<=0 || !operator) { toast("请选择学生、输入积分和操作人"); return; }
     const s = students.find(i => i.id == id);
     if (s) { 
       s.points -= num; 
-      addPointRecord(s.name, '单人减分', -num, operator, remark);
-      store.set('students', students); 
-      updateGroupPoints(); 
+      addPointRecord(s.name, "单人减分", -num, operator, remark);
+      await store.set("students", students); 
+      updateGroupPoints();
+      await store.set("groups", groups);
+      await store.set("records", records);
       renderAll(); 
       toast(`-${num} 操作人：${operator}`);
     }
   };
-  document.getElementById('groupAdd').onclick = () => {
-    const gid = document.getElementById('pointGroup').value;
-    const num = Number(document.getElementById('groupPoint').value);
-    const operator = document.getElementById('operator2').value.trim();
-    const remark = document.getElementById('remark2').value.trim();
-    if(!gid || num<=0 || !operator){toast('请选择小组、输入积分和操作人');return;}
+
+  document.getElementById("groupAdd").onclick = async () => {
+    const gid = document.getElementById("pointGroup").value;
+    const num = Number(document.getElementById("groupPoint").value);
+    const operator = document.getElementById("operator2").value.trim();
+    const remark = document.getElementById("remark2").value.trim();
+    if (!gid || num<=0 || !operator) { toast("请选择小组、输入积分和操作人"); return; }
     students.filter(s => s.groupId == gid).forEach(s => {
       s.points += num;
-      addPointRecord(s.name, '小组加分', num, operator, remark);
+      addPointRecord(s.name, "小组加分", num, operator, remark);
     });
-    store.set('students', students); 
-    updateGroupPoints(); 
+    await store.set("students", students); 
+    updateGroupPoints();
+    await store.set("groups", groups);
+    await store.set("records", records);
     renderAll(); 
     toast(`小组+${num} 操作人：${operator}`);
   };
-  document.getElementById('groupMinus').onclick = () => {
-    const gid = document.getElementById('pointGroup').value;
-    const num = Number(document.getElementById('groupPoint').value);
-    const operator = document.getElementById('operator2').value.trim();
-    const remark = document.getElementById('remark2').value.trim();
-    if(!gid || num<=0 || !operator){toast('请选择小组、输入积分和操作人');return;}
+
+  document.getElementById("groupMinus").onclick = async () => {
+    const gid = document.getElementById("pointGroup").value;
+    const num = Number(document.getElementById("groupPoint").value);
+    const operator = document.getElementById("operator2").value.trim();
+    const remark = document.getElementById("remark2").value.trim();
+    if (!gid || num<=0 || !operator) { toast("请选择小组、输入积分和操作人"); return; }
     students.filter(s => s.groupId == gid).forEach(s => {
       s.points -= num;
-      addPointRecord(s.name, '小组减分', -num, operator, remark);
+      addPointRecord(s.name, "小组减分", -num, operator, remark);
     });
-    store.set('students', students); 
-    updateGroupPoints(); 
+    await store.set("students", students); 
+    updateGroupPoints();
+    await store.set("groups", groups);
+    await store.set("records", records);
     renderAll(); 
     toast(`小组-${num} 操作人：${operator}`);
   };
-  document.getElementById('classAdd').onclick = () => {
-    const num = Number(document.getElementById('classPoint').value);
-    const operator = document.getElementById('operator3').value.trim();
-    const remark = document.getElementById('remark3').value.trim();
-    if(num<=0 || !operator){toast('请输入积分和操作人');return;}
+
+  document.getElementById("classAdd").onclick = async () => {
+    const num = Number(document.getElementById("classPoint").value);
+    const operator = document.getElementById("operator3").value.trim();
+    const remark = document.getElementById("remark3").value.trim();
+    if (num<=0 || !operator) { toast("请输入积分和操作人"); return; }
     students.forEach(s => {
       s.points += num;
-      addPointRecord(s.name, '全班加分', num, operator, remark);
+      addPointRecord(s.name, "全班加分", num, operator, remark);
     });
-    store.set('students', students); 
-    updateGroupPoints(); 
+    await store.set("students", students); 
+    updateGroupPoints();
+    await store.set("groups", groups);
+    await store.set("records", records);
     renderAll(); 
     toast(`全班+${num} 操作人：${operator}`);
   };
-  document.getElementById('classMinus').onclick = () => {
-    const num = Number(document.getElementById('classPoint').value);
-    const operator = document.getElementById('operator3').value.trim();
-    const remark = document.getElementById('remark3').value.trim();
-    if(num<=0 || !operator){toast('请输入积分和操作人');return;}
+
+  document.getElementById("classMinus").onclick = async () => {
+    const num = Number(document.getElementById("classPoint").value);
+    const operator = document.getElementById("operator3").value.trim();
+    const remark = document.getElementById("remark3").value.trim();
+    if (num<=0 || !operator) { toast("请输入积分和操作人"); return; }
     students.forEach(s => {
       s.points -= num;
-      addPointRecord(s.name, '全班减分', -num, operator, remark);
+      addPointRecord(s.name, "全班减分", -num, operator, remark);
     });
-    store.set('students', students); 
-    updateGroupPoints(); 
+    await store.set("students", students); 
+    updateGroupPoints();
+    await store.set("groups", groups);
+    await store.set("records", records);
     renderAll(); 
     toast(`全班-${num} 操作人：${operator}`);
   };
 
-  // 批量选择操作
-  document.getElementById('selectAll').onclick = () => {
-    document.querySelectorAll('.student-checkbox').forEach(cb => cb.checked = true);
+  document.getElementById("selectAll").onclick = () => {
+    document.querySelectorAll(".student-checkbox").forEach(cb => cb.checked = true);
   };
-  document.getElementById('invertSelect').onclick = () => {
-    document.querySelectorAll('.student-checkbox').forEach(cb => cb.checked = !cb.checked);
+  document.getElementById("invertSelect").onclick = () => {
+    document.querySelectorAll(".student-checkbox").forEach(cb => cb.checked = !cb.checked);
   };
-  document.getElementById('unSelectAll').onclick = () => {
-    document.querySelectorAll('.student-checkbox').forEach(cb => cb.checked = false);
+  document.getElementById("unSelectAll").onclick = () => {
+    document.querySelectorAll(".student-checkbox").forEach(cb => cb.checked = false);
   };
 
-  // 自定义批量加减分
-  document.getElementById('batchAddSelected').onclick = () => {
-    const num = Number(document.getElementById('batchPoint').value);
-    const operator = document.getElementById('operator4').value.trim();
-    const remark = document.getElementById('remark4').value.trim();
-    if(num<=0 || !operator){toast('请输入积分和操作人');return;}
-    const selected = Array.from(document.querySelectorAll('.student-checkbox:checked')).map(cb => cb.value);
-    if(selected.length===0){toast('请选择学生');return;}
+  document.getElementById("batchAddSelected").onclick = async () => {
+    const num = Number(document.getElementById("batchPoint").value);
+    const operator = document.getElementById("operator4").value.trim();
+    const remark = document.getElementById("remark4").value.trim();
+    if (num<=0 || !operator) { toast("请输入积分和操作人"); return; }
+    const selected = Array.from(document.querySelectorAll(".student-checkbox:checked")).map(cb => cb.value);
+    if (selected.length===0) { toast("请选择学生"); return; }
     students.forEach(s => { 
-      if(selected.includes(String(s.id))) {
+      if (selected.includes(String(s.id))) {
         s.points += num;
-        addPointRecord(s.name, '批量加分', num, operator, remark);
+        addPointRecord(s.name, "批量加分", num, operator, remark);
       }
     });
-    store.set('students', students); 
-    updateGroupPoints(); 
+    await store.set("students", students); 
+    updateGroupPoints();
+    await store.set("groups", groups);
+    await store.set("records", records);
     renderAll();
     toast(`选中学生+${num} 操作人：${operator}`);
   };
-  document.getElementById('batchMinusSelected').onclick = () => {
-    const num = Number(document.getElementById('batchPoint').value);
-    const operator = document.getElementById('operator4').value.trim();
-    const remark = document.getElementById('remark4').value.trim();
-    if(num<=0 || !operator){toast('请输入积分和操作人');return;}
-    const selected = Array.from(document.querySelectorAll('.student-checkbox:checked')).map(cb => cb.value);
-    if(selected.length===0){toast('请选择学生');return;}
+
+  document.getElementById("batchMinusSelected").onclick = async () => {
+    const num = Number(document.getElementById("batchPoint").value);
+    const operator = document.getElementById("operator4").value.trim();
+    const remark = document.getElementById("remark4").value.trim();
+    if (num<=0 || !operator) { toast("请输入积分和操作人"); return; }
+    const selected = Array.from(document.querySelectorAll(".student-checkbox:checked")).map(cb => cb.value);
+    if (selected.length===0) { toast("请选择学生"); return; }
     students.forEach(s => { 
-      if(selected.includes(String(s.id))) {
+      if (selected.includes(String(s.id))) {
         s.points -= num;
-        addPointRecord(s.name, '批量减分', -num, operator, remark);
+        addPointRecord(s.name, "批量减分", -num, operator, remark);
       }
     });
-    store.set('students', students); 
-    updateGroupPoints(); 
+    await store.set("students", students); 
+    updateGroupPoints();
+    await store.set("groups", groups);
+    await store.set("records", records);
     renderAll();
     toast(`选中学生-${num} 操作人：${operator}`);
   };
 
-  // 清空积分
-  document.getElementById('clearAllPoints').onclick = () => {
-    openModal('清空积分确认', `
+  document.getElementById("clearAllPoints").onclick = () => {
+    openModal("清空积分确认", `
       <input id="clearPointsPwd" type="password" placeholder="请输入密码" class="w-full border rounded-lg px-4 py-3 mb-6 text-lg">
       <button onclick="confirmClearPoints()" class="w-full py-4 bg-red-500 text-white rounded-xl text-lg">确认</button>
     `);
   };
-  window.confirmClearPoints = () => {
-    const pwd = document.getElementById('clearPointsPwd').value;
+
+  window.confirmClearPoints = async () => {
+    const pwd = document.getElementById("clearPointsPwd").value;
     if (pwd === CLEAR_PASSWORD) {
       students.forEach(s => {
         s.points = 0;
-        addPointRecord(s.name, '清空积分', 0, '管理员');
+        addPointRecord(s.name, "清空积分", 0, "管理员");
       });
-      store.set('students', students);
+      await store.set("students", students);
       updateGroupPoints();
+      await store.set("groups", groups);
+      await store.set("records", records);
       renderAll();
       closeModal();
-      toast('已清空所有积分');
+      toast("已清空所有积分");
     } else {
-      toast('密码错误');
+      toast("密码错误");
     }
   };
 
-  // 清空记录
-  document.getElementById('clearAllRecords').onclick = () => {
-    openModal('清空记录确认', `
+  document.getElementById("clearAllRecords").onclick = () => {
+    openModal("清空记录确认", `
       <input id="clearRecordsPwd" type="password" placeholder="请输入密码" class="w-full border rounded-lg px-4 py-3 mb-6 text-lg">
       <button onclick="confirmClearRecords()" class="w-full py-4 bg-red-500 text-white rounded-xl text-lg">确认</button>
     `);
   };
-  window.confirmClearRecords = () => {
-    const pwd = document.getElementById('clearRecordsPwd').value;
+
+  window.confirmClearRecords = async () => {
+    const pwd = document.getElementById("clearRecordsPwd").value;
     if (pwd === CLEAR_PASSWORD) {
       records = [];
-      store.set('records', records);
+      await store.set("records", records);
       renderAll();
       closeModal();
-      toast('已清空所有记录');
+      toast("已清空所有记录");
     } else {
-      toast('密码错误');
+      toast("密码错误");
     }
   };
 
-  // 修改密码
-  document.getElementById('savePwd').onclick = () => {
-    const oldPwd = document.getElementById('oldPwd').value;
-    const newPwd = document.getElementById('newPwd').value;
-    const confirmPwd = document.getElementById('confirmPwd').value;
-    if(oldPwd !== CLEAR_PASSWORD){toast('原密码错误');return;}
-    if(!newPwd || newPwd !== confirmPwd){toast('新密码不一致');return;}
+  document.getElementById("savePwd").onclick = async () => {
+    const oldPwd = document.getElementById("oldPwd").value;
+    const newPwd = document.getElementById("newPwd").value;
+    const confirmPwd = document.getElementById("confirmPwd").value;
+    if (oldPwd !== CLEAR_PASSWORD) { toast("原密码错误"); return; }
+    if (!newPwd || newPwd !== confirmPwd) { toast("新密码不一致"); return; }
     CLEAR_PASSWORD = newPwd;
-    store.setPwd(newPwd);
-    toast('密码修改成功');
-    document.getElementById('oldPwd').value = '';
-    document.getElementById('newPwd').value = '';
-    document.getElementById('confirmPwd').value = '';
+    await store.setPwd(newPwd);
+    toast("密码修改成功");
+    document.getElementById("oldPwd").value = "";
+    document.getElementById("newPwd").value = "";
+    document.getElementById("confirmPwd").value = "";
   };
 
-  // 导出
-  document.getElementById('exportRank').onclick = () => {
-    const data = students.sort((a,b)=>b.points-a.points).map(s => [s.name, groups.find(g=>g.id==s.groupId)?.name||'未分组', s.points]);
-    exportCSV(data, '班级积分排行榜.csv', ['姓名','小组','积分']);
+  document.getElementById("exportRank").onclick = () => {
+    const data = students.sort((a,b)=>b.points-a.points).map(s => [s.name, groups.find(g=>g.id==s.groupId)?.name||"未分组", s.points]);
+    exportCSV(data, "班级积分排行榜.csv", ["姓名","小组","积分"]);
   };
-  document.getElementById('exportRecord').onclick = () => {
-    const data = records.map(r => [r.time, r.target, r.type, r.point, r.operator, r.remark || '']);
-    exportCSV(data, '积分操作记录.csv', ['时间','学生/小组','操作类型','积分','操作人','备注']);
+  document.getElementById("exportRecord").onclick = () => {
+    const data = records.map(r => [r.time, r.target, r.type, r.point, r.operator, r.remark || ""]);
+    exportCSV(data, "积分操作记录.csv", ["时间","学生/小组","操作类型","积分","操作人","备注"]);
   };
 
-  // 搜索
-  document.getElementById('searchStudent').oninput = renderStudents;
+  document.getElementById("searchStudent").oninput = renderStudents;
 
-  // 移动端菜单
-  document.getElementById('mobileToggle').onclick = () => {
-    const sidebar = document.getElementById('sidebar');
-    sidebar.classList.toggle('hidden');
-    sidebar.classList.toggle('flex');
+  document.getElementById("mobileToggle").onclick = () => {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("hidden");
+    sidebar.classList.toggle("flex");
   };
 });
 </script>
